@@ -23,29 +23,36 @@ for(let i = 0; i < 3; i++)
 
 function addCard(size, x,y)
 {
+
   let cardCover = new CardCover(game.stage, size, x, y);
-
-  let card = new Card(game.stage, size, x , y);
-
   game.stage.addChild(cardCover);
 
+  let card = new Card(game.stage, size, x , y);
+  game.stage.addChild(card);
 
-  var container = new PIXI.Container();
-  container.position.x = x;
-  container.position.y = y;
 
-  container.addChild(card);
-  game.stage.addChild(container);
 
-  var mascara = new PIXI.Graphics();
-  game.stage.addChild(mascara);
-  mascara.position.x = x + size/2;
-  mascara.position.y = y + size/2;
-  mascara.lineStyle(0);
+  let mask = new PIXI.Graphics();
+  game.stage.addChild(mask);
+  mask.position.x = x + size/2;
+  mask.position.y = y + size/2;
+  //mask.lineStyle(0);
 
-  container.mask = mascara;
+  card.mask = mask;
+  //card.mask = null;
 
-  drawStar(mascara, 0, 0, 20, 30, 25);
+
+  //card.mask.beginFill(0xFF0000);
+  //card.mask.drawCircle(0 , 0, 30);
+
+
+
+
+
+
+  //container.addChild(card);
+
+
 
 }
 
