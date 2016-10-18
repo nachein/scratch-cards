@@ -6,7 +6,7 @@ export default class CardCover extends PIXI.Sprite{
     this.position.set(x,y);
     this.stage = stage;
     this.width = this.height = size;
-    
+
     this.interactive = true;
     this.on('touchmove', this.scratch);
   }
@@ -14,10 +14,10 @@ export default class CardCover extends PIXI.Sprite{
   update(delta){
     //this.rotation += 5*delta;
   }
-  
+
   scratch(event){
     let pos = event.target.position;
-    
+
     console.log(this.stage);
     var mascara = new PIXI.Graphics();
     this.stage.addChild(mascara);
@@ -28,7 +28,7 @@ export default class CardCover extends PIXI.Sprite{
     this.stage.mask = mascara;
 
   }
-  
+
   drawScratcg(ctx, cx, cy, spikes, outerRadius, innerRadius) {
     var rot = Math.PI / 2 * 3;
     var x = cx;
@@ -50,5 +50,5 @@ export default class CardCover extends PIXI.Sprite{
     }
     ctx.lineTo(cx, cy - outerRadius)
 }
-  
+
 }
