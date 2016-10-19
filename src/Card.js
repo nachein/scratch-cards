@@ -8,6 +8,7 @@ export default class Card extends PIXI.Sprite{
     this.stage = stage;
     this.width = this.height = size;
     this.anchor.set(0.5);
+    this.isOnScene = false;
   }
 
   update(delta){

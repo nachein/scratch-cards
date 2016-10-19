@@ -3,22 +3,22 @@ import PIXI from 'pixi.js';
 export default class CardCover extends PIXI.Sprite{
   constructor(stage, size, x, y){
     super(PIXI.Texture.fromImage('./assets/chest.png'));
-    this.position.set(x + size/2,y + size/2);
-    this.stage = stage;
-    this.width = this.height = size;
     this.anchor.set(0.5);
+    this.position.set(x + size/2,y + size/2);
+    //this.stage = stage;
+    this.width = this.height = size;
 
+    //this.interactive = true;
 
-    this.interactive = true;
-
-    let mask = new PIXI.Graphics();
-    mask.lineStyle(0);
+    // let mask = new PIXI.Graphics();
+    // mask.lineStyle(0);
 
     //this.addChild(mask);
     //this.mask = mask;
 
     //this.drawStar(this.mask, 0, 0, 20, 30, 25);
     this.on('touchstart', this.scratch);
+    this.scratching = false;
   }
 
   update(delta){

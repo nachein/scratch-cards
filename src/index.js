@@ -28,31 +28,63 @@ function addCard(size, x,y)
   game.stage.addChild(cardCover);
 
   let card = new Card(game.stage, size, x , y);
-  game.stage.addChild(card);
+  //game.stage.addChild(card);
 
 
 
-  let mask = new PIXI.Graphics();
+  var mask = new PIXI.Graphics();
   game.stage.addChild(mask);
   mask.position.x = x + size/2;
   mask.position.y = y + size/2;
-  //mask.lineStyle(0);
+  mask.lineStyle(0);
 
   card.mask = mask;
-  //card.mask = null;
+
+  cardCover.interactive = true;
+
+  cardCover.on('mousedown', function(){
+    cardCover.scratching = true;
+  });
+
+  cardCover.on('touchstart', function(){
+    cardCover.scratching = true;
+  });
 
 
-  //card.mask.beginFill(0xFF0000);
-  //card.mask.drawCircle(0 , 0, 30);
+  cardCover.on('mousemove', function(e){
+    scratch(card, cardCover);
+  });
 
+  cardCover.on('touchmove', function(e){
+    scratch(card, cardCover);
+  });
 
+  cardCover.on('mouseup', function(e){
+    cardCover.scratching = false;
+  });
 
+  cardCover.on('touchend', function(e){
+    cardCover.scratching = false;
+  });
 
+  function scratch(card, cardCover){
+    // if(!cardCover.scratching)
+    //   return;
 
+    var pos = game.renderer.plugins.interaction.eventData.data.global;//game.renderer.plugins.interaction.mouse.global;
+    console.log(pos);
+    if(!card.isOnScene)
+    {
+      game.stage.addChild(card);
+      card.isOnScene = true;
+    }
 
-  //container.addChild(card);
+    drawStar(card.mask, pos.x -  mask.position.x, pos.y - mask.position.y, 20, 70, 40);
+  }
 
 }
+
+
 
 function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius) {
     var rot = Math.PI / 2 * 3;
