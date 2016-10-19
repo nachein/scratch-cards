@@ -5,5 +5,7 @@ export default {
   rendererOptions: {
     //pixi rendererOptions
     backgroundColor : 0x1099bb
-  }
+  },
+  topPadding: 100,
+  innerPadding: 25
 };

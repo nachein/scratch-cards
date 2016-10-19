@@ -1,7 +1,9 @@
 import PIXI from 'pixi.js';
 
-export default class Game {
-  constructor(config){
+export default class Game
+{
+  constructor(config)
+  {
     const Renderer = (config.webgl) ? PIXI.autoDetectRenderer : PIXI.CanvasRenderer;
     this.renderer = new Renderer(config.width || 800, config.height || 600, config.rendererOptions);
     document.body.appendChild(this.renderer.view);
@@ -10,27 +12,44 @@ export default class Game {
     this.animationLoop.on('prerender', this.update.bind(this));
   }
 
-  update(){
-    for(let i = 0; i < this.stage.children.length; i++){
-      if(this.stage.children[i].update){
+  update()
+  {
+    for(let i = 0; i < this.stage.children.length; i++)
+    {
+      if(this.stage.children[i].update)
+      {
         this.stage.children[i].update(this.animationLoop.delta);
       }
     }
   }
 
-  start(){
+  start()
+  {
     this.animationLoop.start();
   }
 
-  stop(){
+  stop()
+  {
     this.animationLoop.stop();
   }
 
-  get stage(){
+  get stage()
+  {
     return this.animationLoop.stage;
   }
 
-  set stage(stage){
+  set stage(stage)
+  {
     this.animationLoop.stage = stage;
+  }
+
+  get scratching()
+  {
+      return this.isScratching;
+  }
+
+  set scratching(isScratching)
+  {
+    this.isScratching = isScratching;
   }
 }
