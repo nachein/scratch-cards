@@ -6,6 +6,6 @@ export default {
     //pixi rendererOptions
     backgroundColor : 0x1099bb
   },
-  topPadding: 100,
+  topPadding: 25,
   innerPadding: 25
 };

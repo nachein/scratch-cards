@@ -66,7 +66,7 @@ export default class CardCover extends PIXI.Sprite
       this.card.onScene = true;
     }
 
-    this.drawScratch(this.card.mask, pos.x -  this.card.mask.position.x, pos.y - this.card.mask.position.y, 20, 30, 15);
+    this.drawScratch(this.card.mask, pos.x -  this.card.mask.position.x, pos.y - this.card.mask.position.y, 20, 50, 35);
 
     this.particles.position.x = pos.x;
     this.particles.position.y = pos.y;
@@ -108,7 +108,7 @@ export default class CardCover extends PIXI.Sprite
     for(var cover of this.covers)
     {
       let distance = this.distance(position.x, position.y, cover.x, cover.y);
-      if(distance < 30)
+      if(distance < 50)
         cover.revealed = true;
     }
   }

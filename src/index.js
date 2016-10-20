@@ -33,7 +33,8 @@ function stopScratching()
 }
 
 // setup 3x3 board
-let tilesSize = (config.width - config.innerPadding * 4) / 3;
+let maxSize = config.height > config.width ? config.width : config.height;
+let tilesSize = (maxSize - config.innerPadding * 4) / 3;
 
 let x,y;
 for(let i = 0; i < 3; i++)

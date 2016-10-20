@@ -7,8 +7,7 @@
   "author": "Juan Ignacio Casal <ignaciocasal@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run dev",
-    "watch": "npm run dev | npm run local",
+    "start": "npm run dev | npm run local",
     "dev": "webpack --config webpack.config.js --progress --inline --colors --watch",
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress --colors -p",
     "local": "./node_modules/.bin/http-server -a localhost -p 8000 -c-1"
@@ -28,6 +27,7 @@
     "transform-loader": "^0.2.3"
   },
   "dependencies": {
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "webpack": "^1.13.2"
   }
 }
