@@ -10,4 +10,4 @@ Credits for https://github.com/Nazariglez/es6-pixi-bolierplate to getting things
 - npm install webpack -g
 - npm install
 
-Now you can use `npm start` to build the app and start a local server at http://localhost:8000/
+Now you can use `npm watch` to build the app and start a local server at http://localhost:8000/

@@ -3,13 +3,14 @@ import CoverArea from './CoverArea.js';
 
 export default class CardCover extends PIXI.Sprite
 {
-  constructor(game, card)
+  constructor(game, card, particles)
   {
     super(PIXI.Texture.fromImage('./assets/chest.png'));
     this.anchor.set(0.5);
     this.card = card;
     this.position.set(this.card.position.x, this.card.position.y);
     this.game = game;
+    this.particles = particles;
 
 
     let size = this.card.height; // assuming square sizes
@@ -20,7 +21,6 @@ export default class CardCover extends PIXI.Sprite
     this.interactive = true;
     this.on('touchmove', this.scratch);
     this.on('mousemove', this.scratch);
-
   }
 
   setupMask()
@@ -67,6 +67,9 @@ export default class CardCover extends PIXI.Sprite
     }
 
     this.drawScratch(this.card.mask, pos.x -  this.card.mask.position.x, pos.y - this.card.mask.position.y, 20, 30, 15);
+
+    this.particles.position.x = pos.x;
+    this.particles.position.y = pos.y;
 
     this.checkCardCoverage(pos);
     if(this.unseenCovers.length < 3)

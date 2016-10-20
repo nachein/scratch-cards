@@ -4,8 +4,13 @@ import Game from './Game';
 import Card from './Card';
 import CardCover from './CardCover';
 import Board from './Board';
+import Particles from 'pixi-particles';
+import ScratchParticles from './ScratchParticle';
 
 let game = new Game(config);
+
+let particles = new ScratchParticles();
+game.stage.addChild(particles);
 
 game.stage.interactive = true;
 
@@ -14,14 +19,17 @@ game.stage.on('mousedown', startScratching);
 game.stage.on('touchend', stopScratching);
 game.stage.on('mouseup', stopScratching);
 
+
 function startScratching()
 {
   game.scratching = true;
+  particles.emitter.maxParticles = 500;
 }
 
 function stopScratching()
 {
   game.scratching = false;
+  particles.emitter.maxParticles = 0;
 }
 
 // setup 3x3 board
@@ -41,8 +49,9 @@ for(let i = 0; i < 3; i++)
 function addCard(size, x,y)
 {
   let card = new Card(size, x , y);
-  let cardCover = new CardCover(game, card);
+  let cardCover = new CardCover(game, card, particles);
   game.stage.addChild(cardCover);
 }
+
 
 game.start();

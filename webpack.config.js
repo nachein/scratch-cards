@@ -35,6 +35,11 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.json$/,
+				include: path.join(__dirname, 'node_modules', 'pixi-particles'),
+				loader: 'json',
+			},
+			{
+				test: /\.json$/,
 				include: path.join(__dirname, 'node_modules', 'pixi.js'),
 				loader: 'json',
 			},
